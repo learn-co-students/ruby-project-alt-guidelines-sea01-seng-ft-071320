@@ -60,5 +60,26 @@ class CommandLine
         end
     end
 
+    what are you trying to do?
+        1. start a Workout
+        2. findsomeone 
+
+        userinput = gets.chomp
+
+        2. 
+
+        if userinput == 2
+            find_user
+
+    def find_user
+        who are you looking for?
+        name = gets.chomp
+
+        User.all.select {|user| user.name == name)
+        end 
+    end
+
+    def everyone 
+        User.all.map {|user| user.name}
 end
 

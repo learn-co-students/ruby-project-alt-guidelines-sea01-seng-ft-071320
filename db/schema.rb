@@ -14,8 +14,6 @@ ActiveRecord::Schema.define(version: 2020_07_28_181411) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
-    t.integer "reps"
-    t.integer "sets"
     t.string "description"
     t.string "body_part"
   end
@@ -24,12 +22,13 @@ ActiveRecord::Schema.define(version: 2020_07_28_181411) do
     t.string "name"
     t.integer "age"
     t.string "fitness_level"
-    t.string "gender"
   end
 
   create_table "workouts", force: :cascade do |t|
     t.integer "exercise_id"
     t.integer "user_id"
+    t.integer "sets"
+    t.integer "reps"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
