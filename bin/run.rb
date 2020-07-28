@@ -1,16 +1,45 @@
 require_relative '../config/environment'
-
+require 'pry'
 # puts "hello world"
 
 def greet 
     puts "Hey, what's the scoop?"
-    gets.strip
+    # gets.strip
 end
 greet
 
-def user_input
-
+def user_input_for_name
+    puts "what is your name?"
+    user_input = gets.strip
+    user_input
 end
+
+
+def create_new_user(user_input)
+    User.all.select do |user|
+        # binding.pry
+        if user.name == user_input
+        else 
+            User.create(name: user_input)
+        end
+    end
+end
+# user_input = create_new_user(user_input)
+create_new_user("Noa")
+
+def user_input_for_flavor
+    puts "hey #{user_input_for_name}, what is your flavor for today?"
+    gets.strip
+end
+flavor = user_input_for_flavor
+
+# def user_input__for_topping
+#     puts "which topping to add?"
+#     gets.strip
+# end
+
+# topping = user_input__for_topping
+
 # => CREATE
 
 #ask user's name

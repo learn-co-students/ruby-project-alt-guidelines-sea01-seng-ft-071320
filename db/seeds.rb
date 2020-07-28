@@ -17,3 +17,5 @@ Review.create(
     rating: Faker::Number.between(from: 1, to: 10), 
     favorite: Faker::Boolean.boolean
 )
+
+binding.pry
