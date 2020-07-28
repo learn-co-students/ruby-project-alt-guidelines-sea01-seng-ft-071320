@@ -59,7 +59,8 @@ class CommandLine
             #something
         end
     end
-
+    
+    #testingthis
     # what are you trying to do?
     #     1. start a Workout
     #     2. findsomeone 
