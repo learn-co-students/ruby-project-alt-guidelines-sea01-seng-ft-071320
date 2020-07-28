@@ -6,6 +6,7 @@ class CreateExercises < ActiveRecord::Migration[5.2]
     t.integer :reps
     t.integer :sets 
     t.string :description
+    t.string :body_part
     end
   end
   end
