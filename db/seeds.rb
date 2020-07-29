@@ -1,3 +1,5 @@
+#This is all test data
+
 nathan = User.create(name: 'Nathan', age: 27, fitness_level: 'moderate')
 darius = User.create(name: 'Darius', age: 23, fitness_level: 'active')
 
@@ -16,4 +18,3 @@ workout3 = Workout.create(user_id: 1, exercise_id: 3, sets: 20, reps: 20)
 workout4 = Workout.create(user_id: 1, exercise_id: 4, sets: 10, reps: 20)
 workout5 = Workout.create(user_id: 1, exercise_id: 5, sets:5, reps: 20)
 workout6 = Workout.create(user_id: 1, exercise_id: 6, sets:5, reps: 20)
-

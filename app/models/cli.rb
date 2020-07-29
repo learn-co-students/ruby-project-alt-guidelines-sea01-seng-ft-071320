@@ -2,12 +2,19 @@
 # prompt = TTY::Prompt.new
 # prompt.ask("What is your name?", default: ENV["USER"])
 
-
 class CommandLine
     def welcome 
+        prompt = TTY::Prompt.new
+        prompt.ask("What is your name?") do |q|
+            q.required true
+            q.validate /\A\w+\Z/
+            q.modify   :capitalize
+          end
         puts "Welcome to GITFIT"
+        
         puts "Do you have an account?"
-# sleep 10000
+        
+
         user_input = gets.chomp.downcase
 
         if user_input == 'yes'
@@ -16,7 +23,7 @@ class CommandLine
 
             if User.exists?(:name => username)
                 $user = User.find_by(name: username)
-                puts ("Welcome back, #{$user.name}!")
+                puts ("Welcome back, #{$user.name}!"
 
             else 
                 puts "We could not find your username"
