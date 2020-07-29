@@ -5,19 +5,22 @@ require 'pry'
 
 
 cli = CommandLineInterface.new
-# cli.greet
-# user_input = cli.user_input_for_name
+# user_input= cli.greet
 # name = cli.create_new_user(user_input)
-# flavor = cli.user_input_for_flavor(name)
-# topping = cli.user_input_for_topping
-# icecream = cli.create_new_ice_cream(flavor, topping)
-# rating = cli.user_input_for_rating
+# cli.menu(name)
+# cli.get_user_input
+# cli.order
+# cli.add_name_to_icecream
+# cli.get_review(name)
+# cli.all_reviews_greater_than_number
+# cli.top_five
+cli.icecream_list_with_average_rating
 # favorite = cli.add_favorite
 # review = cli.create_new_review(name, icecream, rating, favorite)
 
-# cli.all_reviews
-cli.all_reviews_grater_then_number(8)
-cli.changed_my_mined("Noa", "skateboard")
+
+
+# cli.all_reviews_grater_then_number(8)
 # cli.update_ice_cream_name("Vnilla", "!!!", "WHAT???")
 
 # cli.find_ice_cream("vanilla", "reeses")

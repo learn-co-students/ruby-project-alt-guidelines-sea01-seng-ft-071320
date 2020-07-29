@@ -1,74 +1,95 @@
 class CommandLineInterface 
 
     def greet 
-        puts "Hey, what's the scoop?"
+        puts "Hey, what's the scoop? Tell us your name!"
+        gets.strip
     end
-    
-    # ask user's name
-    def user_input_for_name
-        puts "what is your name?"
-        user_input = gets.strip
-        user_input
-    end
-    # CREATE
+
     def create_new_user(user_input)
         User.find_or_create_by(name: user_input)
     end
  
+    def menu(name)
+        puts "Hey #{name.name}, tell as what you want:"
+        puts "Order - make a new order"  
+        puts "Top 5 - for see our top 5"
+        puts "Update - to update your review"
+        puts "Delete -  to delete your review"
+    end
+
+    def get_user_input
+        gets.strip
+    end
     #ask user to choose a flavor
-    def user_input_for_flavor(user_name)
-        puts "hey #{user_name.name}, what's your flavor for today?"
-        gets.strip
-    end
-    
-    #ask user to choose toppings
-    def user_input_for_topping
+    def order
+        puts "what's your flavor for today?"
+        flavor = gets.strip
         puts "which topping to add?"
-        gets.strip
+        topping = gets.strip
+        IceCream.find_or_create_by(flavors: flavor, toppings: topping)
+    end
+
+    def add_name_to_icecream 
+        IceCream.all.each do |icecream|
+            if icecream.name == nil
+                icecream.name = Faker::Hipster.word
+            end
+        end
     end
     
-    #CREATE
-    #if icecream with the same flavor and topping exists  
-    #else create a new icecream
-    def create_new_ice_cream(flavor, topping)
-        IceCream.find_or_create_by(name: Faker::Hipster.word, flavors: flavor, toppings: topping)
-    end
-    
-    #ask user to rate the icecream
-    def user_input_for_rating
-        puts "rating?"
-        gets.strip
-    end
-    
-    def add_favorite
+    def update_favorite
         puts "Do you want to add this to your favorite?"
         puts "type 'Yes' or 'No'"
         input = gets.strip
         input == "Yes" ? input = true : input = false
         input
     end
-                
-    #CREATE: create a review
-    def create_new_review(name, icecream, rating, favorite)
-        Review.create(user_id: name.id, icecream_id: icecream.id, rating: rating.to_i, favorite: favorite)
+
+    def get_review(name)
+        puts "Enjoy! please rate your ice cream (a number between 1-10)"
+        rating = gets.strip
+        favorite = update_favorite
+        Review.create(user_id: name.id, icecream_id: IceCream.last.id, rating: rating.to_i, favorite: favorite)
         puts "Thanks #{name.name}"
     end
-
-    def all_reviews
-        # binding.pry
-        puts Review.all
-    end
     
-    #READ :user can see all the other user's review,
-    #array with Icecreams name
-    def all_reviews_grater_then_number(number)
-        new = Review.all.select do |review|
-            review.rating >= number
+    # we are trying to get the names of the ice cream and include that in the top_five method
+    def all_reviews_greater_than_number
+        new = Review.all.each do |review|
+            # review.rating >= 7
         end
-        result = new.map {|review| review.ice_cream.name}.uniq
+        result = new.map {|review| review.ice_cream.id}.uniq
         # binding.pry
         puts result
     end 
+
+    def top_five
+        # binding.pry
+        Review.all.order(rating: :desc).distinct
+        all_reviews_greater_than_number
+
+    end
+
+    def icecream_list_with_average_rating
+
+        Review.all.map {|review| [:icecream_id] = review.rating} 
+
+
+        # Review.all.map {|review| hash[:icecream_id] => [:rating}
+        # Review.all.map do |review|
+        #     review.icecream_id
+        # end
+        Review.all.map do |review| 
+            review.sum(:rating)
+        end
+
+
+    end
+
+
+
+    #READ :user can see all the other user's review,
+    #array with Icecreams name
 
     #UPDATE:user can update favorites and rating 
 
