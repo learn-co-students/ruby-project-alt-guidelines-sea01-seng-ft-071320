@@ -38,24 +38,25 @@ class CommandLine
         end
     end
 
-    # def review_previous_session
-    #     binding.pry
-    #     puts "Here are your previous sessions"
-    #     self.workouts.
-    #     def edit_session
-    #     end
-    # end
+tty-prompts
+    def review_previous_session
+        binding.pry
+        puts "Here are your previous sessions"
+        session
+        self.workouts.
+        def edit_session
+        end
+    end
 
-    # def new_session
-    # end
+    def new_session
+    end
 
-    # def edit_sets #this would be something like user.workouts.first.repss = value
-    #     puts "current sets: #{reps}"
-    #     puts "How many sets did you want to do?"
-    # end
+    def edit_sets #this would be something like user.workouts.first.repss = value
+        puts "current sets: #{reps}"
+        puts "How many sets did you want to do?"
+    end
 
-    # def edit_sets #this would be something like self.workouts.first or select a workout.sets = value
-    #     puts "current sets: #{sets}"
-    #     puts "How many sets did you want to do?"
-    # end
+    def edit_sets #this would be something like self.workouts.first or select a workout.sets = value
+        puts "current sets: #{sets}"
+        puts "How many sets did you want to do?"
 end
