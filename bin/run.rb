@@ -1,6 +1,6 @@
 require_relative '../config/environment'
-require "tty-prompt"
+require 'tty-prompt'
 
 
-# cli = CommandLine.new
-# cli.welcome
+cli = CommandLine.new
+cli.welcome

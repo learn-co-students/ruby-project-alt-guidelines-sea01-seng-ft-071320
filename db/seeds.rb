@@ -9,7 +9,7 @@ jumping_jacks = Exercise.create(name: 'Jumping jacks', description: 'A jumping j
 crunches = Exercise.create(name: 'Crunches', description: 'The crunch is a classic core exercise. It specifically trains your abdominal muscles, which are part of your core. ... It also includes your oblique muscles on the sides of your trunk, as well as the muscles in your pelvis, lower back, and hips. Together, these muscles help stabilize your body.', body_part: 'Chest')
 # pull_up = Exercise.create(name: 'Pull Up')
 
-#one whole session
+# one whole session
 workout1 = Workout.create(user_id: 1, exercise_id: 1, sets: 20, reps: 5)
 workout2 = Workout.create(user_id: 1, exercise_id: 2, sets: 10, reps: 10)
 workout3 = Workout.create(user_id: 1, exercise_id: 3, sets: 20, reps: 20)
