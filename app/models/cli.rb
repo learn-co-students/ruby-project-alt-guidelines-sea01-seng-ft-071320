@@ -1,7 +1,7 @@
 
 # prompt = TTY::Prompt.new
 # prompt.ask("What is your name?", default: ENV["USER"])
-
+require 'pry'
 class CommandLine #class for CLI 
     def welcome 
         puts "Welcome to GITFIT"
@@ -13,8 +13,8 @@ class CommandLine #class for CLI
         if user_input == 'yes'
             puts "What is your username?"
             username = gets.chomp.downcase
-
-            if User.exists?(:name => username)
+        
+            if User.exists?(name: username)
                 $user = User.find_by(name: username)
                 puts ("Welcome back, #{$user.name}!").titleize #titleize capitalizes the first letter of a string
             else 
@@ -33,7 +33,7 @@ class CommandLine #class for CLI
             puts "Username is taken, please try again"
             add_new_user
         else 
-            new_user = User.create(:name => username)
+            new_user = User.create(name: username)
             $user = new_user
             puts "Hello, #{$user.name}!"
 
@@ -42,7 +42,8 @@ class CommandLine #class for CLI
             puts "Moderate"
             puts "Sedentary"
             fitness_level = gets.chomp.downcase
-            username.fitness_level = fitness_level
+            
+            $user.fitness_level = fitness_level
             puts "Your fitness level is #{fitness_level}"
             
         end
@@ -62,7 +63,38 @@ class CommandLine #class for CLI
         end
     end
     
-    def find_all_workouts
+    def new_session  #menu 
+
+    end
+
+    def find_all_sessions
+        puts "Would you like to see all of your past sessions?(yes/no)"
+        user_input = gets.chomp.downcase 
+        binding.pry
+        if user_input == 'yes'
+            $user.workouts.each do |workout| 
+                puts workout.exercise.name
+                puts workout.exercise.description
+                puts workout.exercise.body_part
+                puts workout.sets
+                puts workout.reps 
+            end
+
+        end
+
+    end
+
+    def name_session
+
+    end
+
+    def edit_session
+
+    end
+
+    def delete_session
+
+    end
         
 end
 
