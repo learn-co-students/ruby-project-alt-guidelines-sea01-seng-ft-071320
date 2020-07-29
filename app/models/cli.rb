@@ -2,20 +2,13 @@
 # prompt = TTY::Prompt.new
 # prompt.ask("What is your name?", default: ENV["USER"])
 
-class CommandLine
+class CommandLine #class for CLI 
     def welcome 
-        prompt = TTY::Prompt.new
-        prompt.ask("What is your name?") do |q|
-            q.required true
-            q.validate /\A\w+\Z/
-            q.modify   :capitalize
-          end
         puts "Welcome to GITFIT"
         
         puts "Do you have an account?"
         
-
-        user_input = gets.chomp.downcase
+        user_input = gets.chomp.downcase #as king for user input
 
         if user_input == 'yes'
             puts "What is your username?"
@@ -23,8 +16,7 @@ class CommandLine
 
             if User.exists?(:name => username)
                 $user = User.find_by(name: username)
-                puts ("Welcome back, #{$user.name}!"
-
+                puts ("Welcome back, #{$user.name}!").titleize #titleize capitalizes the first letter of a string
             else 
                 puts "We could not find your username"
                 add_new_user
@@ -36,7 +28,7 @@ class CommandLine
 
     def add_new_user
         puts "Please enter your username"
-        username = gets.chomp.downcase
+        username = gets.chomp
         if User.exists?(:name => username)
             puts "Username is taken, please try again"
             add_new_user
@@ -56,7 +48,7 @@ class CommandLine
         end
     end
 
-    def read_exercises
+    def read_exercises #workouts
         puts "want to read through the exercises?"
         input = gets.chomp.downcase
 
@@ -64,34 +56,13 @@ class CommandLine
             put "What exercise would you like to learn about?"
             exercise = gets.chomp.downcase
 
-            Exercise.all.select {|exercise| exercise == exercise}
-            puts exercise.description
+            Exercise.all.map {|exercise| "#{exercise.name} -  #{exercise.description}"}
         else 
             #something
         end
     end
     
-    #testingthis
-    # what are you trying to do?
-    #     1. start a Workout
-    #     2. findsomeone 
-
-    #     userinput = gets.chomp
-
-    #     2. 
-
-    #     if userinput == 2
-    #         find_user
-
-    # def find_user
-    #     who are you looking for?
-    #     name = gets.chomp
-
-    #     User.all.select {|user| user.name == name}
-    #     end 
-    # end
-
-    # def everyone 
-    #     User.all.map {|user| user.name}
+    def find_all_workouts
+        
 end
 
