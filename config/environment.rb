@@ -1,5 +1,5 @@
 require 'bundler'
-require "tty-prompt"
+require "tty-prompt" #lets us use the ttyl prompt in cli.rb
 
 Bundler.require
 
