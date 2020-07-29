@@ -38,6 +38,7 @@ class CommandLine
         end
     end
 
+tty-prompts
     def review_previous_session
         binding.pry
         puts "Here are your previous sessions"
@@ -58,5 +59,4 @@ class CommandLine
     def edit_sets #this would be something like self.workouts.first or select a workout.sets = value
         puts "current sets: #{sets}"
         puts "How many sets did you want to do?"
-    # end
 end
