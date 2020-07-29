@@ -2,80 +2,23 @@ require_relative '../config/environment'
 require 'pry'
 # puts "hello world"
 
-def greet 
-    puts "Hey, what's the scoop?"
-    # gets.strip
-end
-greet
-
-def user_input_for_name
-    puts "what is your name?"
-    user_input = gets.strip
-    user_input
-end
 
 
-def create_new_user(user_input)
-    User.all.select do |user|
-        # binding.pry
-        if user.name == user_input
-        else 
-            User.create(name: user_input)
-        end
-    end
-end
-# user_input = create_new_user(user_input)
-create_new_user("Noa")
+cli = CommandLineInterface.new
+# cli.greet
+# user_input = cli.user_input_for_name
+# name = cli.create_new_user(user_input)
+# flavor = cli.user_input_for_flavor(name)
+# topping = cli.user_input_for_topping
+# icecream = cli.create_new_ice_cream(flavor, topping)
+# rating = cli.user_input_for_rating
+# favorite = cli.add_favorite
+# review = cli.create_new_review(name, icecream, rating, favorite)
 
-def user_input_for_flavor
-    puts "hey #{user_input_for_name}, what is your flavor for today?"
-    gets.strip
-end
-flavor = user_input_for_flavor
+# cli.all_reviews
+cli.all_reviews_grater_then_number(8)
+cli.changed_my_mined("Noa", "skateboard")
+# cli.update_ice_cream_name("Vnilla", "!!!", "WHAT???")
 
-# def user_input__for_topping
-#     puts "which topping to add?"
-#     gets.strip
-# end
-
-# topping = user_input__for_topping
-
-# => CREATE
-
-#ask user's name
-
-#ask user to choose a flavor
-    #if flavor exists print flavor 
-    #else create a new flavor
-
-#ask user to choose toppings
-    #if flavor exists print flavor 
-    #else create a new flavor
-
-#ask user to rate the icecream
-
-#ask user if want to add to favorites list
-
-#after all the methods above run
-    #create a review
-    #puts a message of the review and a thank you note.
-
-
-# => READ
-
-#user can see all the other user's review
-
-#user can see the ice cream with the highest ratings
-
-
-# => UPDATE
-
-#user can add ice cream to the their list of favorites
-
-
-# => DELETE
-
-#user can delete the review
-
-
-
+# cli.find_ice_cream("vanilla", "reeses")
+# cli.find_user_id("taci")
