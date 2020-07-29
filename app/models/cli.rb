@@ -1,14 +1,14 @@
-
 # prompt = TTY::Prompt.new
 # prompt.ask("What is your name?", default: ENV["USER"])
 require 'pry'
 class CommandLine #class for CLI 
     def welcome 
         puts "Welcome to GITFIT"
+
         
-        puts "Do you have an account?"
+#         puts "Do you have an account?"
         
-        user_input = gets.chomp.downcase #as king for user input
+        user_input = gets.chomp.downcase #asking for user input
 
         if user_input == 'yes'
             puts "What is your username?"
@@ -45,24 +45,26 @@ class CommandLine #class for CLI
             
             $user.fitness_level = fitness_level
             puts "Your fitness level is #{fitness_level}"
+
             
-        end
-    end
+#         end
+#     end
 
-    def read_exercises #workouts
-        puts "want to read through the exercises?"
-        input = gets.chomp.downcase
+#     def read_exercises #workouts
+#         puts "want to read through the exercises?"
+#         input = gets.chomp.downcase
 
-        if input == 'yes'
-            put "What exercise would you like to learn about?"
-            exercise = gets.chomp.downcase
+#         if input == 'yes'
+#             put "What exercise would you like to learn about?"
+#             exercise = gets.chomp.downcase
 
-            Exercise.all.map {|exercise| "#{exercise.name} -  #{exercise.description}"}
-        else 
-            #something
-        end
-    end
+#             Exercise.all.map {|exercise| "#{exercise.name} -  #{exercise.description}"}
+#         else 
+#             #something
+#         end
+#     end
     
+
     def new_session  #menu 
 
     end
@@ -97,4 +99,5 @@ class CommandLine #class for CLI
     end
         
 end
+
 
